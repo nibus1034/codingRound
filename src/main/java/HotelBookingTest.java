@@ -1,3 +1,4 @@
+
 //import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,6 +49,7 @@ public class HotelBookingTest {
 //        if (PlatformUtil.isLinux()) {
 //            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 //        }
+
     }
 
 }

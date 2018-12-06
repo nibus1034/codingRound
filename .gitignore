@@ -1,4 +1,8 @@
 build
 .idea
+<<<<<<< HEAD
 .gradle
 /bin/
+=======
+.gradle
+>>>>>>> branch 'master' of https://github.com/nibus1034/codingRound

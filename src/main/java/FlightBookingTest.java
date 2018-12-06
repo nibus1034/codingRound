@@ -1,3 +1,4 @@
+
 //import com.sun.javafx.PlatformUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -85,5 +86,6 @@ public class FlightBookingTest {
 //        if (PlatformUtil.isLinux()) {
 //            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 //        }
+
     }
 }
