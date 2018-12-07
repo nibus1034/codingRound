@@ -1,55 +1,71 @@
 
 //import com.sun.javafx.PlatformUtil;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class HotelBookingTest {
+import pageClass.HotelBookingPage;
+import reusableLibrary.ReusableLibrary;
 
-    WebDriver driver = new ChromeDriver();
+public class HotelBookingTest extends ReusableLibrary {
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
+	WebDriver driver;
+	HotelBookingPage hotelBookingPage;
 
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
+	@BeforeTest(description = "method to setup Chrome browser and open app url")
+	public void setupApplication() {
+		setDriverPath();
+		driver = new ChromeDriver();
+		driver.get("https://www.cleartrip.com/");
+		driver.manage().window().maximize();
 
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
+	}
 
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
+	@Test(description = "method to search for Hotels")
+	public void shouldBeAbleToSearchForHotels() {
 
-    @Test
-    public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
+		try {
 
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
+			hotelBookingPage = new HotelBookingPage(driver);
+			waitFor(3001);
 
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			hotelBookingPage.hotelLink.click();
 
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
+			hotelBookingPage.localityTextBox.click();
+			hotelBookingPage.localityTextBox.sendKeys("Indiranagar, Bangalore");
+			wait.until(ExpectedConditions.visibilityOf(hotelBookingPage.locationDropdown));
+			hotelBookingPage.localityTextBox.sendKeys(Keys.TAB);
 
-        driver.quit();
+			hotelBookingPage.dateSelecion.click();
+			waitFor(1001);
+			hotelBookingPage.dateSelecion.click();
 
-    }
+			new Select(hotelBookingPage.travellerSelection).selectByVisibleText("1 room, 2 adults");
+			hotelBookingPage.searchButton.click();
 
-    private void setDriverPath() {
-//        if (PlatformUtil.isMac()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver");
-//        }
-//        if (PlatformUtil.isWindows()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        }
-//        if (PlatformUtil.isLinux()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-//        }
+			waitFor(5000);
+			wait.until(ExpectedConditions.visibilityOf(hotelBookingPage.searchSummary));
+			// verify that result appears for the provided journey search
+			Assert.assertTrue(isElementPresent(driver, By.className("searchSummary")));
 
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@AfterTest(description = "method to close the browser")
+	public void closeApplication() {
+		driver.quit();
+	}
 
 }

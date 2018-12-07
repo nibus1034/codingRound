@@ -1,52 +1,56 @@
 
 //import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SignInTest {
+import pageClass.SignInPage;
+import reusableLibrary.ReusableLibrary;
 
-    WebDriver driver = new ChromeDriver();
+public class SignInTest extends ReusableLibrary {
 
-    @Test
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+	WebDriver driver;
 
-        setDriverPath();
+	SignInPage signInPage;
 
-        driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+	@BeforeTest(description = "method to setup Chrome browser and open app url ")
+	public void setupApplication() {
+		setDriverPath();
+		driver = new ChromeDriver();
+		driver.get("https://www.cleartrip.com/");
+		driver.manage().window().maximize();
 
-        driver.findElement(By.linkText("Your trips")).click();
-        driver.findElement(By.id("SignIn")).click();
+	}
 
-        driver.findElement(By.id("signInButton")).click();
+	@Test(description = "method to try to Sign In without filling any details & get error msg")
+	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+		signInPage = new SignInPage(driver);
+		waitFor(2000);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-        String errors1 = driver.findElement(By.id("errors1")).getText();
-        Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        driver.quit();
-    }
+		signInPage.yourTripLink.click();
+		signInPage.signInBtn.click();
 
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
+		waitFor(5000);
+		driver.switchTo().frame(1);
+		waitFor(3000);
+		signInPage.signInBtnFrame.click();
 
-    private void setDriverPath() {
-//        if (PlatformUtil.isMac()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver");
-//        }
-//        if (PlatformUtil.isWindows()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        }
-//        if (PlatformUtil.isLinux()) {
-//            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-//        }
-    }
+		String errors1 = signInPage.errorMsg.getText();
+		Assert.assertTrue(errors1.contains("There were errors in your submission"));
+		waitFor(4000);
+		driver.switchTo().defaultContent();
 
+	}
+
+	@AfterTest(description = "method to close the browser")
+	public void closeApplication() {
+		driver.quit();
+
+	}
 
 }
