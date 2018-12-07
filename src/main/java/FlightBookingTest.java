@@ -5,41 +5,65 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class FlightBookingTest {
 
-    WebDriver driver = new ChromeDriver();
-
+    WebDriver driver;
+    
+    @BeforeTest
+    public void setupApplication() {
+    	  setDriverPath();
+          driver = new ChromeDriver();
+          driver.get("https://www.cleartrip.com/");
+          driver.manage().window().maximize();
+    	
+    }
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
 
-        setDriverPath();
-        driver.get("https://www.cleartrip.com/");
+//        setDriverPath();
+//        driver = new ChromeDriver();
+//        driver.get("https://www.cleartrip.com/");
+        
+        WebDriverWait wait=new WebDriverWait(driver, 20);
         waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
 
-        driver.findElement(By.id("FromTag")).clear();
-        driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
+        //creating webelement for referencing easily
+        WebElement fromCity=driver.findElement(By.id("FromTag"));
+        
+        fromCity.clear();
+        fromCity.click();
+        fromCity.sendKeys("Bangalore");
 
         //wait for the auto complete options to appear for the origin
 
-        waitFor(2000);
+        waitFor(2000); 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-1")));
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        WebElement toCity=  driver.findElement(By.id("ToTag"));
+        toCity.clear();
+        toCity.click();
+        toCity.sendKeys("Delhi");
 
         //wait for the auto complete options to appear for the destination
 
         waitFor(2000);
         //select the first item from the destination auto complete list
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-2")));
+        
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
 
@@ -52,11 +76,17 @@ public class FlightBookingTest {
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
 
+    }
+    
+    
+    @AfterTest
+    public void closeApplication() {
+
         //close the browser
         driver.quit();
 
     }
-
+    
 
     private void waitFor(int durationInMilliSeconds) {
         try {
@@ -86,6 +116,6 @@ public class FlightBookingTest {
 //        if (PlatformUtil.isLinux()) {
 //            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 //        }
-
+    	System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 }

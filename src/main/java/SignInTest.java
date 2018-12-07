@@ -3,28 +3,38 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignInTest {
 
-    WebDriver driver = new ChromeDriver();
-
+    WebDriver driver;
+    
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
         setDriverPath();
-
+       driver = new ChromeDriver();
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
+        WebDriverWait wait=new WebDriverWait(driver,20);
+        
 
         driver.findElement(By.linkText("Your trips")).click();
         driver.findElement(By.id("SignIn")).click();
 
+        waitFor(5000);
+       driver.switchTo().frame(1);
+      //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signInButton")));
         driver.findElement(By.id("signInButton")).click();
 
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        waitFor(4000);
+        //driver.switchTo().defaultContent();
+        
         driver.quit();
     }
 
@@ -46,6 +56,7 @@ public class SignInTest {
 //        if (PlatformUtil.isLinux()) {
 //            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
 //        }
+    	System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     }
 
 
