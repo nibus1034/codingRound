@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="66069" started-at="2018-12-07T16:27:24Z" finished-at="2018-12-07T16:28:30Z">
+  <suite name="Default suite" duration-ms="34186" started-at="2018-12-07T18:23:43Z" finished-at="2018-12-07T18:24:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="66069" started-at="2018-12-07T16:27:24Z" finished-at="2018-12-07T16:28:30Z">
-      <class name="HotelBookingTest">
-        <test-method status="PASS" signature="setupApplication()[pri:0, instance:HotelBookingTest@55f3ddb1]" name="setupApplication" is-config="true" duration-ms="30751" started-at="2018-12-07T21:57:24Z" finished-at="2018-12-07T21:57:54Z">
+    <test name="Default test" duration-ms="34186" started-at="2018-12-07T18:23:43Z" finished-at="2018-12-07T18:24:17Z">
+      <class name="SignInTest">
+        <test-method status="PASS" signature="setupApplication()[pri:0, instance:SignInTest@8bd1b6a]" name="setupApplication" is-config="true" duration-ms="15535" started-at="2018-12-07T23:53:43Z" finished-at="2018-12-07T23:53:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApplication -->
-        <test-method status="PASS" signature="shouldBeAbleToSearchForHotels()[pri:0, instance:HotelBookingTest@55f3ddb1]" name="shouldBeAbleToSearchForHotels" duration-ms="28869" started-at="2018-12-07T21:57:54Z" finished-at="2018-12-07T21:58:23Z">
+        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:SignInTest@8bd1b6a]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="17622" started-at="2018-12-07T23:53:58Z" finished-at="2018-12-07T23:54:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldBeAbleToSearchForHotels -->
-        <test-method status="PASS" signature="closeApplication()[pri:0, instance:HotelBookingTest@55f3ddb1]" name="closeApplication" is-config="true" duration-ms="6414" started-at="2018-12-07T21:58:23Z" finished-at="2018-12-07T21:58:30Z">
+        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
+        <test-method status="PASS" signature="closeApplication()[pri:0, instance:SignInTest@8bd1b6a]" name="closeApplication" is-config="true" duration-ms="999" started-at="2018-12-07T23:54:16Z" finished-at="2018-12-07T23:54:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeApplication -->
-      </class> <!-- HotelBookingTest -->
+      </class> <!-- SignInTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
