@@ -6,7 +6,7 @@
       <class name="SignInTest">
         <methods>
           <include name="closeApplication"/>
-          <include name="shouldThrowAnErrorIfSignInDetailsAreMissing"/>
+          <include name="signInWithoutDetails"/>
           <include name="setupApplication"/>
         </methods>
       </class> <!-- SignInTest -->

@@ -30,7 +30,7 @@ public class HotelBookingTest extends ReusableLibrary {
 	}
 
 	@Test(description = "method to search for Hotels")
-	public void shouldBeAbleToSearchForHotels() {
+	public void searchHotels() {
 
 		try {
 

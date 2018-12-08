@@ -27,7 +27,7 @@ public class SignInTest extends ReusableLibrary {
 	}
 
 	@Test(description = "method to try to Sign In without filling any details & get error msg")
-	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+	public void signInWithoutDetails() {
 		signInPage = new SignInPage(driver);
 		waitFor(2000);
 		WebDriverWait wait = new WebDriverWait(driver, 20);

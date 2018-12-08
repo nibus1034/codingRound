@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="34186" started-at="2018-12-07T18:23:43Z" finished-at="2018-12-07T18:24:17Z">
+  <suite name="Default suite" duration-ms="32910" started-at="2018-12-08T15:49:59Z" finished-at="2018-12-08T15:50:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="34186" started-at="2018-12-07T18:23:43Z" finished-at="2018-12-07T18:24:17Z">
-      <class name="SignInTest">
-        <test-method status="PASS" signature="setupApplication()[pri:0, instance:SignInTest@8bd1b6a]" name="setupApplication" is-config="true" duration-ms="15535" started-at="2018-12-07T23:53:43Z" finished-at="2018-12-07T23:53:58Z">
+    <test name="Default test" duration-ms="32910" started-at="2018-12-08T15:49:59Z" finished-at="2018-12-08T15:50:32Z">
+      <class name="FlightBookingTest">
+        <test-method status="PASS" signature="setupApplication()[pri:0, instance:FlightBookingTest@8bd1b6a]" name="setupApplication" is-config="true" duration-ms="16426" started-at="2018-12-08T21:19:59Z" description="method to setup Chrome browser and open app url" finished-at="2018-12-08T21:20:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupApplication -->
-        <test-method status="PASS" signature="shouldThrowAnErrorIfSignInDetailsAreMissing()[pri:0, instance:SignInTest@8bd1b6a]" name="shouldThrowAnErrorIfSignInDetailsAreMissing" duration-ms="17622" started-at="2018-12-07T23:53:58Z" finished-at="2018-12-07T23:54:16Z">
+        <test-method status="PASS" signature="bookTicketOneWayJourney()[pri:0, instance:FlightBookingTest@8bd1b6a]" name="bookTicketOneWayJourney" duration-ms="15436" started-at="2018-12-08T21:20:16Z" description="Method to book a one way journey" finished-at="2018-12-08T21:20:31Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowAnErrorIfSignInDetailsAreMissing -->
-        <test-method status="PASS" signature="closeApplication()[pri:0, instance:SignInTest@8bd1b6a]" name="closeApplication" is-config="true" duration-ms="999" started-at="2018-12-07T23:54:16Z" finished-at="2018-12-07T23:54:17Z">
+        </test-method> <!-- bookTicketOneWayJourney -->
+        <test-method status="PASS" signature="closeApplication()[pri:0, instance:FlightBookingTest@8bd1b6a]" name="closeApplication" is-config="true" duration-ms="1012" started-at="2018-12-08T21:20:31Z" description="method to close the browser" finished-at="2018-12-08T21:20:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeApplication -->
-      </class> <!-- SignInTest -->
+      </class> <!-- FlightBookingTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

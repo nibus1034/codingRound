@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+//class for Flight booking page elements
 public class FlightBookingPage {
 
 	WebDriver driver;

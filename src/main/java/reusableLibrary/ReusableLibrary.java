@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ReusableLibrary {
 
-	// method to check whether element is present or not
+	// method to check whether element is present or not in a page
 	public boolean isElementPresent(WebDriver driver, By by) {
 		try {
 
@@ -33,7 +33,7 @@ public class ReusableLibrary {
 
 	}
 
-	// method for halting the execution
+	// method for halting the execution in between
 	public void waitFor(int durationInMilliSeconds) {
 		try {
 			Thread.sleep(durationInMilliSeconds);

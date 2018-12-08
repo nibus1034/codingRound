@@ -31,7 +31,7 @@ public class FlightBookingTest extends ReusableLibrary {
 	}
 
 	@Test(description = "Method to book a one way journey")
-	public void testThatResultsAppearForAOneWayJourney() {
+	public void bookTicketOneWayJourney() {
 
 		flightBookingPage = new FlightBookingPage(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 20);
