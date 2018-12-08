@@ -1,0 +1,17 @@
+Code Review Comments
+
+ 1. TestNG annotations can be used for better execution experience.
+ 2. Creating Webelements can help in easily referencing the elements in the code.
+ 3. Each class is having different way of implementation.It would be better if all classes are in the same format as it will ease in code maintainence & reusability.
+ 4.Page Object Model can be implemented, which makes code cleaner and easy to understand.
+ 5. Method names can be made  realistic.
+
+Implementation 
+
+ 1. TestNG annotations have been implemented. Before and After Test annotation has been used to  setup the application & close application during the script execution.
+ 2. Page Object Model has been implemented for each page so as to separate object repository from test code. 
+ 3. Reusable library has been implemented to keep the frequently reusable code. 
+ 4. Method names have been refactored to be more realistic. 
+
+I have used 2 git accounts nibus1034 & subz1034 for checking in the code.
+
